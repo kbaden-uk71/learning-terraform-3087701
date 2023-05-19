@@ -3,20 +3,20 @@ data "aws_ami" "app_ami" {
 
   filter {
     name   = "name"
-    values = ["bitnami-tomact-*-x86-hvm-ebs-nami"]
+    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
   }
 
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
-  owners   = ["979382823631"] # Bitnami
+  
+  data "aws_vpc" "default" {
+  default = true 
+    
+  owners = ["979382823631"] # Bitnami
 }
 
-data "aws_vpc" "default" {
-  default = true  
-}
 
 resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
