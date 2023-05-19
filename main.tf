@@ -11,11 +11,11 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
   
-  data "aws_vpc" "default" {
-  default = true
-  }
-    
   owners = ["979382823631"] # Bitnami
+}
+
+data "aws_vpc" "default" {
+  default = true
 }
 
 
